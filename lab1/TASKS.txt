@@ -1,0 +1,10 @@
+1. Hello - 1 клас.
+
+2. Hello - 2 класа.
+
+3. Hello - 2 класа + діалогове вікно.
+
+4. Hello - jar.
+
+5. Hello - 2 класа в різних пакетах.
+javac -d bin sources\com\...\HelloWorld.java -cp sources (Приклад компіляції)
