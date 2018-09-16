@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.io.*;
 
 public class Multiple {
@@ -7,15 +6,14 @@ public class Multiple {
         System.out.println("Enter values of array in line: ");
         int[] array = initArray();
 
-        if (array == null) {
+        if (array != null) {
+            System.out.println("Entered array: " + Arrays.toString(array));
+
+            System.out.println(findModNumbers(array, 5));
+            System.out.println(findModNumbers(array, 10));
+
+        } else
             System.out.println("ERROR: Array is empty");
-            return;
-        }
-
-        System.out.println("Entered array: " + Arrays.toString(array));
-
-        System.out.println(findModNumbers(array, 5));
-        System.out.println(findModNumbers(array, 10));
     }
 
     private static String findModNumbers(int[] sourceNumbers, int divider) {
