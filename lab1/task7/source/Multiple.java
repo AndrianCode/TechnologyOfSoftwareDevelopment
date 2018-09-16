@@ -1,54 +1,55 @@
 import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.io.*;
 
 public class Multiple {
     public static void main(String[] args) {
+        System.out.println("Enter values of array in line: ");
         int[] array = initArray();
 
-        System.out.println("Entered array: " + Arrays.toString(array));
-
-        findModNumbers(array, 5);
-        findModNumbers(array, 10);
-    }
-
-    private static void findModNumbers(int[] sourceNumbers, int divider) {
-        if (sourceNumbers == null) {
-            System.out.println("Invalid array!");
+        if (array == null) {
+            System.out.println("ERROR: Array is empty");
             return;
         }
 
-        System.out.print("Numbers which are divisible by " + divider + ": ");
+        System.out.println("Entered array: " + Arrays.toString(array));
+
+        System.out.println(findModNumbers(array, 5));
+        System.out.println(findModNumbers(array, 10));
+    }
+
+    private static String findModNumbers(int[] sourceNumbers, int divider) {
+        if (sourceNumbers == null) return "Invalid array!";
+
+        String info = "Numbers which are divisible by " + divider + ": ";
+        String data = "";
 
         for (int sourceNumber : sourceNumbers) {
             if (sourceNumber % divider == 0) {
-                System.out.print(sourceNumber + " ");
+                data += sourceNumber + " ";
             }
         }
-        System.out.println();
+        if (data.length() == 0) data += "none";
+        return info + data;
     }
 
     private static int[] initArray() {
-        Scanner sc = new Scanner(System.in);
-
         try {
-            System.out.println("Enter length of array: ");
-            int length = sc.nextInt();
-            if (length <= 0) {
-                System.out.println("Invalid length of array!");
-                return null;
-            }
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String lines = br.readLine();
 
-            int[] array = new int[length];
-            for (int i = 0; i < length; i++) {
-                array[i] = sc.nextInt();
-            }
+            if (lines.length() == 0) return null;
 
-            return array;
-        } catch (InputMismatchException e) {
-            System.out.println("Input error: can not convert string to numeric format!");
+            String[] strs = lines.trim().split("\\s+");
+
+            int[] arr = new int[strs.length];
+            for (int i = 0; i < strs.length; i++) {
+                arr[i] = Integer.parseInt(strs[i]);
+            }
+            return arr;
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
-
 }
