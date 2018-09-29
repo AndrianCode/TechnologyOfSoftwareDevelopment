@@ -1,4 +1,4 @@
-package com.gmail.maxsmv1998.stringsManager;
+package com.gmail.maxsmv1998.dataStructures;
 
 import java.util.Arrays;
 
