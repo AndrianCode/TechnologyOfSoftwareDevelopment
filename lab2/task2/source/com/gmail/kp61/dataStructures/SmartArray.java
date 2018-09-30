@@ -6,12 +6,14 @@ public class SmartArray {
     private int[] data;
 
     public SmartArray(int[] arr) {
+        if (arr == null)
+            throw new IllegalArgumentException("Input array can not be NULL!");
         data = arr;
     }
 
-    public int multiplOfElmtsWithEvenIndices() {
-        if (data == null || data.length == 0)
-            return 0;
+    public int multiplOfElmtsWithEvenIndices() throws Exception {
+        if (data.length == 0)
+            throw new Exception("Array can not be empty!");
 
         int multiple = 1;
         for (int i = 0; i < data.length; i += 2) {
@@ -20,9 +22,9 @@ public class SmartArray {
         return multiple;
     }
 
-    public int sumBtwFirstAndLastZero() {
-        if (data == null || data.length == 0)
-            return 0;
+    public int sumBtwFirstAndLastZero() throws Exception {
+        if (data.length == 0)
+            throw new Exception("Array can not be empty!");
 
         int sum = 0;
         int firstIndx = 0;
@@ -35,7 +37,6 @@ public class SmartArray {
 
         for (int i = firstIndx; i < lastIndx; i++)
             sum += data[i];
-
 
         return sum;
     }
