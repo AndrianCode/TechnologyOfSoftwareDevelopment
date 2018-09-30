@@ -10,6 +10,15 @@ public class Arguments {
     }
 
     @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < strs.length; i++) {
+            result.append(String.format("Argument[%d]: %s\n", i, strs[i]));
+        }
+        return result.toString();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
@@ -20,14 +29,5 @@ public class Arguments {
     @Override
     public int hashCode() {
         return Arrays.hashCode(strs);
-    }
-
-    @Override
-    public String toString() {
-        String result = "";
-        for (int i = 0; i < strs.length; i++) {
-            result += String.format("Argument[%d]: %s\n", i, strs[i]);
-        }
-        return result;
     }
 }

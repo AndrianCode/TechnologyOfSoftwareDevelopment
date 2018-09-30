@@ -1,6 +1,5 @@
 package com.gmail.maxsmv1998.dataStructures;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,12 +10,9 @@ public class SpecialArray {
         this.data = data;
     }
 
-
-
-    public int[] findModNumbers(int divider) throws IOException {
+    public int[] findModNumbers(int divider) {
         if (data == null)
             throw new Error("Invalid array!");
-
 
         ArrayList<Integer> list = new ArrayList<>();
 
@@ -26,13 +22,9 @@ public class SpecialArray {
             }
         }
 
-        int [] result = new int [list.size()];
-
-        for (int i = 0; i < list.size(); i++) {
-            result[i] = list.get(i);
-        }
-
-        return result;
+        return list.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
     }
 
     @Override
