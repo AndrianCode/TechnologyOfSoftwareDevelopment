@@ -13,9 +13,16 @@ public class StringContainer {
     /**
      * Sorting array in order of increasing strings length
      */
-
     public void sort() {
         Arrays.sort(strings, Comparator.comparingInt(String::length));
+    }
+
+    public String getStringsLength() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < strings.length; i++) {
+            result.append(String.format("String[%d]: %d\n", i, strings[i].length()));
+        }
+        return result.toString();
     }
 
     /**
@@ -25,7 +32,7 @@ public class StringContainer {
     public String toString() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
-            result.append(String.format("String[%d]: %s, Length: %d\n", i, strings[i], strings[i].length()));
+            result.append(String.format("String[%d]: %s\n", i, strings[i]));
         }
         return result.toString();
     }

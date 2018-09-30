@@ -6,6 +6,8 @@ import java.util.Objects;
 public class Developer {
     private String fullName;
     private String currentTask;
+    private Date assignTaskDate;
+    private Date doneTaskDate;
 
     public Developer(String fullName) {
         this.fullName = fullName;
@@ -20,16 +22,23 @@ public class Developer {
         return currentTask;
     }
 
+    public String getAssignTaskDate() {
+        return assignTaskDate.toString();
+    }
+
+    public String getDoneTaskDate() {
+        return doneTaskDate.toString();
+    }
+
     /**
      * Method to get task
      *
      * @param task assigned task for developer
      * @return date of received task
      */
-    public String assignTask(String task) {
+    public void assignTask(String task) {
         currentTask = task;
-        Date date = new Date(System.currentTimeMillis() - 100000);
-        return date.toString();
+        assignTaskDate = new Date(System.currentTimeMillis() - 100000);
     }
 
     /**
@@ -38,14 +47,13 @@ public class Developer {
      * @return date of finished task or
      * message that the developer does not have the current task
      */
-    public String doneTask() {
+    public void doneTask() {
         if (currentTask == null)
-            return "Developer does not have the current task!";
+            throw new Error("Task was not assigned!");
 
         currentTask = null;
 
-        Date date = new Date();
-        return date.toString();
+        doneTaskDate = new Date();
     }
 
 
